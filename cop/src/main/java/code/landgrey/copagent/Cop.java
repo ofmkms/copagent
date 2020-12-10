@@ -95,11 +95,11 @@ public class Cop {
             }
 
             // update attach jar path
-            attach_jar_path = new File(agent_work_directory, "agent.jar").getAbsolutePath();
+            attach_jar_path = new File(agent_work_directory, "agent-1.3.jar").getAbsolutePath();
 
             // release agent.jar
             if(! new File(attach_jar_path).exists()){
-                PathUtils.copyResources("/agent.jar", new File(attach_jar_path));
+                PathUtils.copyResources("/agent-1.3.jar", new File(attach_jar_path));
                 // check agent.jar
                 if(! new File(attach_jar_path).exists()){
                     AnsiLog.error("Create agent.jar file [{}] failed !", attach_jar_path);

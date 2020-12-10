@@ -58,6 +58,7 @@ public class Agent {
         // 实现的可能具有 web shell 功能的父类名
         List<String> riskSuperClassesName = new ArrayList<String>();
         riskSuperClassesName.add("javax.servlet.http.HttpServlet");
+        riskSuperClassesName.add("javax.servlet.Filter");
 
         // 黑名单拦截
         List<String> riskPackage = new ArrayList<String>();
@@ -152,6 +153,8 @@ public class Agent {
         riskKeyword.add("ProcessBuilder");
         riskKeyword.add("getRuntime");
         riskKeyword.add("shell");
+        riskKeyword.add("shell");
+
 
         String results = "All Suspicious Class    : " + resultClasses.size() + "\n\n";
         String high_level = "============================================================\nhigh risk level Class   : \n";
@@ -165,6 +168,10 @@ public class Agent {
                     level = "high";
                     break;
                 }
+            }
+
+            if (clazz.getName().contains("jsp$")){
+                level = "high";
             }
             String tmp = "";
             try{
